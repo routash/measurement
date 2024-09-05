@@ -107,7 +107,7 @@
                             </td>
                             <td class="input-td1">
                                 <div class="row ">
-                                    <div class="col-6">Top </div>
+                                    <div class="col-6">Top* </div>
                                     <div class="form-group col-6 ">
                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="top-width-1" name="details[0][top_width]">
                                     </div>
@@ -127,7 +127,7 @@
                             </td>
                             <td class="input-td1">
                                 <div class="row">
-                                    <div class="col-6">Top </div>
+                                    <div class="col-6">Top* </div>
                                     <div class="form-group col-6">
                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="left-height-1" name="details[0][left_height]">
                                     </div>

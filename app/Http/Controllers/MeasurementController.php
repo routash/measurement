@@ -37,21 +37,26 @@ class MeasurementController extends Controller
                          ->with('success', 'Measurement created successfully.');
     }
 
-public function show($id)
-{
-    $measurement = Measurement::find($id);
-
-    if (!$measurement) {
-        abort(404, 'Measurement not found');
+    public function show($id)
+    {
+        $measurement = Measurement::find($id);
+    
+        if (!$measurement) {
+            return response()->json(['error' => 'Measurement not found'], 404);
+        }
+            $details = $measurement->details;
+        if (is_string($details)) {
+            $details = json_decode($details, true);
+        }
+    
+        return response()->json([
+            'id' => $measurement->id,
+            'client_name' => $measurement->client_name,
+            'room_name' => $measurement->room_name,
+            'details' => $details, 
+        ]);
     }
-
-    if (is_string($measurement->details)) {
-        $measurement->details = json_decode($measurement->details, true);
-    }
-
-    return view('measurements.show', compact('measurement'));
-}
-
+    
     
     
     public function edit($id)
@@ -121,5 +126,6 @@ public function show($id)
     
         return Excel::download(new MeasurementsExport($measurement), 'measurement_data.xlsx');
     }
+ 
 
 }
