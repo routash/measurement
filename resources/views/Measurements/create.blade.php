@@ -60,8 +60,8 @@
     <form action="{{ route('measurements.store') }}" method="POST">
         @csrf
         <div class="row mt-4 align-items-end">
-            <div class="col-md-8"></div>
-            <div class="col-md-4 d-flex">
+            <div class="col-md-9"></div>
+            <div class="col-md-3 d-flex">
                 <label for="client-name" class="text-danger text-nowrap">Client Name</label>
                 <input type="text" class="mx-2 form-control form-control-sm border bg-light-subtle" id="client-name" name="client_name">
             </div>

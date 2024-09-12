@@ -109,13 +109,14 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-4 align-items-end">
-                                                <div class="col-9"></div>
-                                                <div class="col-1 text-end">Client Name</div>
-                                                <div class="col-2">
-                                                    <input type="text" class="form-control bg-light-subtle" value="${data.client_name || ''}" disabled>
+                                               <div class="col-md-9"></div>
+                                                <div class="col-md-3 d-flex">
+                                                    <label for="client-name" class="text-danger text-nowrap">Client Name</label>
+                                                    <input type="text" class="mx-2 form-control form-control-sm border bg-light-subtle" value="${data.client_name || ''}" disabled>
                                                 </div>
-                                            </div>
+                                              
                                         </div>
+
                                     `;
                                     displayHeader = false; 
                                 }
