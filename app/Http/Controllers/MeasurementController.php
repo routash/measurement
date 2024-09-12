@@ -6,6 +6,7 @@ use App\Models\Measurement;
 use App\Exports\MeasurementsExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon; 
 
 
 class MeasurementController extends Controller
@@ -72,12 +73,8 @@ class MeasurementController extends Controller
             'details' => 'required|array',
             'details.*.room_name' => 'nullable|string',
             'details.*.top_width' => 'nullable|string',
-            'details.*.middle_width' => 'nullable|string',
-            'details.*.bottom_width' => 'nullable|string',
             'details.*.left_height' => 'nullable|string',
-            'details.*.middle_height' => 'nullable|string',
-            'details.*.right_height' => 'nullable|string',
-            'details.*.window_depth' => 'nullable|string',
+            'details.*.blind_type' => 'nullable|string',
             'details.*.mount_type' => 'nullable|string',
             'details.*.fabric' => 'nullable|string',
             'details.*.notes' => 'nullable|string',
@@ -86,12 +83,8 @@ class MeasurementController extends Controller
         foreach ($validatedData['details'] as &$detail) {
             $detail['room_name'] = $detail['room_name'] ?? '';
             $detail['top_width'] = $detail['top_width'] ?? '';
-            $detail['middle_width'] = $detail['middle_width'] ?? '';
-            $detail['bottom_width'] = $detail['bottom_width'] ?? '';
             $detail['left_height'] = $detail['left_height'] ?? '';
-            $detail['middle_height'] = $detail['middle_height'] ?? '';
-            $detail['right_height'] = $detail['right_height'] ?? '';
-            $detail['window_depth'] = $detail['window_depth'] ?? '';
+            $detail['blind_type'] = $detail['blind_type'] ?? '';
             $detail['mount_type'] = $detail['mount_type'] ?? '';
             $detail['fabric'] = $detail['fabric'] ?? '';
             $detail['notes'] = $detail['notes'] ?? '';
@@ -116,16 +109,23 @@ class MeasurementController extends Controller
                          ->with('success', 'Measurement deleted successfully.');
     }
 
-    public function exportMeasurement($id)
-    {
-        $measurement = Measurement::find($id);
+  
+public function exportMeasurement($id)
+{
+    $measurement = Measurement::find($id);
 
-        if (!$measurement) {
-            return redirect()->back()->with('error', 'Measurement not found.');
-        }
-    
-        return Excel::download(new MeasurementsExport($measurement), 'measurement_data.xlsx');
+    if (!$measurement) {
+        return redirect()->back()->with('error', 'Measurement not found.');
     }
- 
+
+    // Access client_name directly from the Measurement model
+    $clientName = $measurement->client_name ?? 'unknown_client';
+    $createdDate = Carbon::parse($measurement->created_at)->format('Y-m-d');
+
+    // Create the filename with client name and creation date
+    $filename = "{$clientName}_measurement_{$createdDate}.xlsx";
+
+    return Excel::download(new MeasurementsExport($measurement), $filename);
+}
 
 }

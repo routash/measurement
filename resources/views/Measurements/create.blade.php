@@ -78,7 +78,7 @@
                             <th class="input-th4">Fabric Name</th>
                             <th class="input-th5">Width (in.)</th>
                             <th class="input-th6">Height (in.)</th>
-                            <th class="input-th7">Window Depth</th>
+                            <th class="input-th7">Blind Type</th>
                             <th class="input-th8">Mount Type</th>
                             <th>Notes:</th>
                         </tr>
@@ -106,49 +106,27 @@
                                 </div>
                             </td>
                             <td class="input-td1">
-                                <div class="row ">
-                                    <div class="col-6">Top* </div>
-                                    <div class="form-group col-6 ">
+                                
+                                    <div class="form-group  ">
                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="top-width-1" name="details[0][top_width]">
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">Middle* </div>
-                                    <div class="form-group col-6">
-                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="middle-width-1" name="details[0][middle_width]">
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">Bottom* </div>
-                                    <div class="form-group col-6">
-                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="bottom-width-1" name="details[0][bottom_width]">
-                                    </div>
-                                </div>
+                                    </div>                            
                             </td>
                             <td class="input-td1">
-                                <div class="row">
-                                    <div class="col-6">Top* </div>
-                                    <div class="form-group col-6">
+                              
+                                    <div class="form-group">
                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="left-height-1" name="details[0][left_height]">
                                     </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">Middle* </div>
-                                    <div class="form-group col-6">
-                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="middle-height-1" name="details[0][middle_height]">
-                                    </div>
-                                </div>
-                                <div class="row mt-2">
-                                    <div class="col-6">Bottom* </div>
-                                    <div class="form-group col-6">
-                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="right-height-1" name="details[0][right_height]">
-                                    </div>
-                                </div>
                             </td>
                             <td class="input-td1">
                                 <div class="form-group ">
-                                    <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="window-depth-1" name="details[0][window_depth]">
-                                </div>
+                             
+                                    <select class="form-control form-control-sm border bg-light-subtle" name="details[0][blind_type]">
+                                        <option value="wand">Wand</option>
+                                        <option value="string" selected>String</option>
+                                        <option value="motorized">Motorized</option>
+                                        <option value="touchless">Touchless</option>
+                                    </select>
+                          </div>
                             </td>
                             <td class="input-td1">
                                 <div class="form-check">
@@ -213,48 +191,23 @@
                     </div>
                 </td>
                 <td class="input-td1">
-                    <div class="row ">
-                        <div class="col-6">Top </div>
-                        <div class="form-group col-6">
+                        <div class="form-group ">
                             <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="top-width-${rowIndex}" name="details[${rowIndex - 1}][top_width]">
                         </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">Middle* </div>
-                        <div class="form-group col-6">
-                            <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="middle-width-${rowIndex}" name="details[${rowIndex - 1}][middle_width]">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">Bottom* </div>
-                        <div class="form-group col-6">
-                            <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="bottom-width-${rowIndex}" name="details[${rowIndex - 1}][bottom_width]">
-                        </div>
-                    </div>
                 </td>
                 <td class="input-td1">
-                    <div class="row ">
-                        <div class="col-6">Top </div>
-                        <div class="form-group col-6">
+                        <div class="form-group ">
                             <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="left-height-${rowIndex}" name="details[${rowIndex - 1}][left_height]">
                         </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">Middle* </div>
-                        <div class="form-group col-6">
-                            <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="middle-height-${rowIndex}" name="details[${rowIndex - 1}][middle_height]">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">Bottom* </div>
-                        <div class="form-group col-6">
-                            <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="right-height-${rowIndex}" name="details[${rowIndex - 1}][right_height]">
-                        </div>
-                    </div>
                 </td>
                 <td class="input-td1">
                     <div class="form-group ">
-                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" id="window-depth-${rowIndex}" name="details[${rowIndex - 1}][window_depth]">
+                        <select class="form-control form-control-sm border bg-light-subtle" name="details[${rowIndex - 1}][blind_type]">
+                            <option value="wand">Wand</option>
+                            <option value="string" selected>String</option>
+                            <option value="motorized">Motorized</option>
+                            <option value="touchless">Touchless</option>
+                        </select>
                     </div>
                 </td>
                 <td class="input-td1">

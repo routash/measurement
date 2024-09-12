@@ -109,9 +109,9 @@
                                                 </div>
                                             </div>
                                             <div class="row mt-4 align-items-end">
-                                                <div class="col-8"></div>
+                                                <div class="col-9"></div>
                                                 <div class="col-1 text-end">Client Name</div>
-                                                <div class="col-3">
+                                                <div class="col-2">
                                                     <input type="text" class="form-control bg-light-subtle" value="${data.client_name || ''}" disabled>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                                                             <th class="input-th4">Cassette Type</th>
                                                             <th class="input-th5">Height (in.)</th>
                                                             <th class="input-th6">Width (in.)</th>
-                                                            <th class="input-th7">Window Depth</th>
+                                                            <th class="input-th7">Blind Type</th>
                                                             <th class="input-th8">Mount Type</th>
                                                             <th>Notes:</th>
                                                         </tr>
@@ -153,62 +153,42 @@
                                                                 </div>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-center bg-light-subtle" value="${detail.fabric_name || ''}" disabled>
-                                                            </td>
+                                                             <div>
+                                                                <input type="text" class="form-control form-control-sm small-input border bg-light-subtle"  value="${detail.fabric_name || ''}" disabled>
+                                                             </div>
+                                                                </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-center bg-light-subtle" value="${detail.cassette_type || ''}" disabled>
-                                                            </td>
+                                                             <div>
+                                                                <input type="text" class="form-control form-control-sm small-input border bg-light-subtle"  value="${detail.cassette_type || ''}" disabled>
+                                                            </div>
+                                                                </td>
                                                             <td>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Top: </div>
-                                                                    <div class="col-6 mt-1 text-end">
+                                                                    <div>
                                                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.top_width || ''}" disabled>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Middle: </div>
-                                                                    <div class="col-6 mt-1 text-end">
-                                                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.middle_width || ''}" disabled>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Bottom: </div>
-                                                                    <div class="col-6 mt-1 text-end">
-                                                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.bottom_width || ''}" disabled>
-                                                                    </div>
-                                                                </div>
                                                             </td>
                                                             <td>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Top: </div>
-                                                                    <div class="col-6 mt-1 text-end">
+                                                                    <div>
                                                                         <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.left_height || ''}" disabled>
                                                                     </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Middle: </div>
-                                                                    <div class="col-6 mt-1 text-end">
-                                                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.middle_height || ''}" disabled>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-6 mt-1">Bottom: </div>
-                                                                    <div class="col-6 mt-1 text-end">
-                                                                        <input type="text" class="form-control form-control-sm small-input border bg-light-subtle" value="${detail.right_height || ''}" disabled>
-                                                                    </div>
-                                                                </div>
                                                             </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-center bg-light-subtle" value="${detail.window_depth || ''}" disabled>
-                                                            </td>
-                                                            <td>
-                                                                <div>
-                                                                    <input type="radio" ${detail.mount_type === 'inside' ? 'checked' : ''} disabled> Inside Mount
-                                                                </div>
-                                                                <div>
-                                                                    <input type="radio" ${detail.mount_type === 'outside' ? 'checked' : ''} disabled> Outside Mount
-                                                                </div>
-                                                            </td>
+                                                        <td>
+                                                            <select class="form-control form-control-sm border bg-light-subtle" name="details[${index}][blind_type]" disabled>
+                                                                <option value="wand" ${detail.blind_type === 'wand' ? 'selected' : ''}>Wand</option>
+                                                                <option value="string" ${detail.blind_type === 'string' ? 'selected' : ''}>String</option>
+                                                                <option value="motorized" ${detail.blind_type === 'motorized' ? 'selected' : ''}>Motorized</option>
+                                                                <option value="touchless" ${detail.blind_type === 'touchless' ? 'selected' : ''}>Touchless</option>
+                                                            </select>
+                                                        </td>
+                                                              <td>
+                                                                   <div>
+                                                                       <input type="radio" name="mount_type_${index}" value="inside" ${detail.mount_type === 'inside' ? 'checked' : ''} disabled> Inside Mount
+                                                                   </div>
+                                                                   <div>
+                                                                       <input type="radio" name="mount_type_${index}" value="outside" ${detail.mount_type === 'outside' ? 'checked' : ''} disabled> Outside Mount
+                                                                   </div>
+                                                               </td>
+
                                                             <td>
                                                                 <textarea class="form-control border bg-light-subtle" rows="4" disabled>${detail.notes || ''}</textarea>
                                                             </td>

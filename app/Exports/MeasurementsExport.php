@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
+
 class MeasurementsExport implements FromArray, WithHeadings, WithStyles, WithTitle
 {
     protected $measurement;
@@ -49,13 +50,9 @@ class MeasurementsExport implements FromArray, WithHeadings, WithStyles, WithTit
             'Room/Window',
             'Fabric Name',
             'Cassette Type',
-            'Width (Top)',
-            'Width (Middle)',
-            'Width (Bottom)',
-            'Height (Top)',
-            'Height (Middle)',
-            'Height (Bottom)',
-            'Window Depth',
+            'Width',
+            'Height',
+            'Blind Type',
             'Mount Type',
             'Notes',
         ];
@@ -69,12 +66,8 @@ class MeasurementsExport implements FromArray, WithHeadings, WithStyles, WithTit
                     $detail['fabric_name'] ?? '',
                     $detail['cassette_type'] ?? '',
                     $detail['top_width'] ?? '',
-                    $detail['middle_width'] ?? '',
-                    $detail['bottom_width'] ?? '',
                     $detail['left_height'] ?? '',
-                    $detail['middle_height'] ?? '',
-                    $detail['right_height'] ?? '',
-                    $detail['window_depth'] ?? '',
+                    $detail['blind_type'] ?? '',
                     isset($detail['mount_type']) ? ($detail['mount_type'] == 'inside' ? 'Inside Mount' : 'Outside Mount') : '',
                     $detail['notes'] ?? '',
                 ];
@@ -111,11 +104,8 @@ class MeasurementsExport implements FromArray, WithHeadings, WithStyles, WithTit
         $sheet->getColumnDimension('F')->setWidth(15);
         $sheet->getColumnDimension('G')->setWidth(15);
         $sheet->getColumnDimension('H')->setWidth(15);
-        $sheet->getColumnDimension('I')->setWidth(15);
-        $sheet->getColumnDimension('J')->setWidth(15);
-        $sheet->getColumnDimension('K')->setWidth(15);
-        $sheet->getColumnDimension('L')->setWidth(20);
-        $sheet->getColumnDimension('M')->setWidth(25);
+        $sheet->getColumnDimension('I')->setWidth(25);
+     
 
         return [
           
